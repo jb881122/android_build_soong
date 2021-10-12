@@ -214,10 +214,6 @@ func SetupPath(ctx Context, config Config) {
 		execs = append(execs, parsePathDir(pathEntry)...)
 	}
 
-	if config.Environment().IsEnvTrue("TEMPORARY_DISABLE_PATH_RESTRICTIONS") {
-		ctx.Fatalln("TEMPORARY_DISABLE_PATH_RESTRICTIONS was a temporary migration method, and is now obsolete.")
-	}
-
 	// Create symlinks from the path_interposer binary to all binaries for each
 	// directory in the original $PATH. This ensures that during the build,
 	// every call to a binary that's expected to be in the $PATH will be
